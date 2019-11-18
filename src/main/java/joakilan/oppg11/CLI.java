@@ -158,6 +158,7 @@ class CLI {
         out.append(command.exec(params, args));
       } catch (IllegalAccessException e) {
         System.out.println("Illegal access exception");
+        e.printStackTrace();
       } catch (InvocationTargetException e) {
         System.out.println("Invocation target exception");
         e.printStackTrace();
