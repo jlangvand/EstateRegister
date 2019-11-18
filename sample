@@ -1,0 +1,5 @@
+ny --knavn=Gloppen --knr=1445 --gnr=77 --bnr=631 --areal=1017,6 --eiernavn="Jens Olsen"
+ny --knavn=Gloppen --knr=1445 --gnr=77 --bnr=131 --areal=661,3 --eiernavn="Nicolay Madsen" --bruksnavn="Syningom"
+ny --knavn=Gloppen --knr=1445 --gnr=75 --bnr=19 --areal=650,6 --eiernavn="Evilyn Jensen" --bruksnavn="Fugletun"
+ny --knavn=Gloppen --knr=1445 --gnr=74 --bnr=188 --areal=1457,2 --eiernavn="Karl Ove Bråten"
+ny --knavn=Gloppen --knr=1445 --gnr=69 --bnr=47 --areal=1339,4 --eiernavn="Elsa Indregård" --bruksnavn="Høiberg"
