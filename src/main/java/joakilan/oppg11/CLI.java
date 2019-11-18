@@ -42,7 +42,7 @@ class CLI {
    */
   CLI(CLIFunctions functions) {
     commands = new ArrayList<Command>();
-    functions.getCommands().stream().filter(m -> m.getName().startsWith("cmd")).forEach(method -> {
+    functions.getCommands().stream().forEach(method -> {
       try {
         addCommand(method.getName(), "", functions);
       } catch (NoSuchMethodException e) {
