@@ -36,7 +36,7 @@ import java.util.stream.Collectors;
 abstract class CLIFunctions {
   /* Declare or initialise fields as needed */
 
-  public List<Method> getCommands() {
+  protected List<Method> getCommands() {
     return Arrays.asList(this.getClass().getDeclaredMethods()).stream().filter(m -> m.getName().startsWith("cmd"))
         .collect(Collectors.toList());
   }
