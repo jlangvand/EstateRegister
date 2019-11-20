@@ -28,7 +28,7 @@ import java.util.ArrayList;
  * at det ofte blir lagt til eller fjernet ellementer (da hadde jeg brukt
  * LinkedList).
  */
-class Estates {
+public class Estates {
   private List<Estate> estates;
 
   Estates() {
@@ -36,15 +36,15 @@ class Estates {
   }
 
   /**
-   * Add a new estate (with name)
+   * Add a new estate (with name).
    *
-   * @param municipalityName
-   * @param municipalityNumber
-   * @param lotNumber
-   * @param sectionNumber
-   * @param area
-   * @param ownerName
-   * @param estateName
+   * @param municipalityName   Municipality name.
+   * @param municipalityNumber Municipality number.
+   * @param lotNumber          Lot number.
+   * @param sectionNumber      Section number.
+   * @param area               Net area of building.
+   * @param ownerName          Name of owner.
+   * @param estateName         Name of estate.
    */
   public void addEstate(String municipalityName, int municipalityNumber, int lotNumber, int sectionNumber, double area,
       String ownerName, String estateName) {
@@ -54,16 +54,13 @@ class Estates {
 
   /**
    *
-   * Add a new estate (without name)
+   * Add a new estate.
    *
-   * @param municipalityName
-   * @param municipalityNumber
-   * @param lotNumber
-   * @param sectionNumber
-   * @param area
-   * @param ownerName
+   * @param data Key, value map containing parameters for new estate.
+   * @return true if operation succeeded.
+   * @throws DuplicateEntryException if estate is already in registry.
    */
-  public boolean addEstate(Map<String, String> data) throws IllegalArgumentException {
+  public boolean addEstate(Map<String, String> data) throws DuplicateEntryException {
     String municipalityName = data.get("knavn").replace("_", " ").replace("\"", "");
     String municipalityNumber = data.get("knr");
     String lotNumber = data.get("bnr");
@@ -86,8 +83,8 @@ class Estates {
   /**
    * Removes an estate given by ID string (####-##/##)
    *
-   * @param id
-   * @throws IllegalArgumentException
+   * @param id ID string.
+   * @throws IllegalArgumentException if ID is malformed.
    */
   public void removeEstate(String id) throws IllegalArgumentException {
     if (id.matches("^\\d{4}-\\d{2,4}/\\d{2,4}$")) {
@@ -99,16 +96,21 @@ class Estates {
     }
   }
 
+  /**
+   * Get all estates.
+   *
+   * @return List of all estate objects.
+   */
   public List<Estate> getAllEstates() {
     return new ArrayList<Estate>(estates);
   }
 
   /**
-   * Get an estate by ID string (####-##/##)
+   * Get an estate by ID string (####-##/##).
    *
-   * @param id
-   * @return Optional
-   * @throws IllegalArgumentException
+   * @param id Unique ID string.
+   * @return Optional representing an estate.
+   * @throws IllegalArgumentException if ID is malformed.
    */
   public Optional<Estate> getEstateByID(String id) throws IllegalArgumentException {
     if (id.matches("^\\d{4}-\\d{2,4}/\\d{2,4}$")) {

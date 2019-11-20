@@ -30,7 +30,7 @@ import java.util.Arrays;
  * Det ligger inne mutatorer for navn, eiernavn, areal og kommunenavn. Alt dette
  * er verdier som kan komme til å forandre seg.
  */
-class Estate {
+public class Estate {
   private String municipalityName;
   private int municipalityNumber;
   private int lotNumber;
@@ -151,7 +151,8 @@ class Estate {
   /**
    * Get standardised, unique ID for the property.
    *
-   * @return
+   * @return Unique ID for this Estate. Format:
+   *         municipalityNumber-lotNumber/sectionNumber
    */
   public String getUniqueID() {
     return String.format("%d-%d/%d", municipalityNumber, lotNumber, sectionNumber);
