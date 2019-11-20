@@ -63,7 +63,7 @@ class Estates {
    * @param area
    * @param ownerName
    */
-  public boolean addEstate(Map<String, String> data) {
+  public boolean addEstate(Map<String, String> data) throws IllegalArgumentException {
     String municipalityName = data.get("knavn").replace("_", " ").replace("\"", "");
     String municipalityNumber = data.get("knr");
     String lotNumber = data.get("bnr");
@@ -71,10 +71,16 @@ class Estates {
     String area = data.get("areal");
     String ownerName = data.get("eiernavn").replace("_", " ").replace("\"", "");
     String estateName = data.get("bruksnavn") == null ? "" : data.get("bruksnavn").replace("_", " ").replace("\"", "");
-    return estateName == null
-        ? estates.add(new Estate(municipalityName, municipalityNumber, lotNumber, sectionNumber, area, ownerName))
-        : estates.add(
-            new Estate(municipalityName, municipalityNumber, lotNumber, sectionNumber, area, ownerName, estateName));
+    String id = String.format("%s-%s/%s", municipalityNumber, lotNumber, sectionNumber);
+    if (this.getEstateByID(id).isEmpty()) {
+      return estateName == null
+          ? estates.add(new Estate(municipalityName, municipalityNumber, lotNumber, sectionNumber, area, ownerName))
+          : estates.add(
+              new Estate(municipalityName, municipalityNumber, lotNumber, sectionNumber, area, ownerName, estateName));
+    } else {
+      throw new DuplicateEntryException("Estate already exists");
+    }
+
   }
 
   /**

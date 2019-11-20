@@ -47,6 +47,8 @@ class EstateFunctions extends CLIFunctions {
   public String cmdNy(List<String> params, Map<String, String> options) {
     try {
       return registry.addEstate(options) ? "Eiendom lagt til" : "Ugyldig format";
+    } catch (DuplicateEntryException e) {
+      return "En eiendom med denne ID er allerede registrert";
     } catch (Exception e) {
       return "En feil oppstod";
     }
